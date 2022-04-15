@@ -21,6 +21,31 @@ function getCocktail() {
     );
 };
 
+function compileIngredients(drink) {
+    const drinkIngredients = document.createElement(`div`);
+    drinkIngredients.classList.add(`drink__ingredients`);
+
+    const drinkList = document.createElement(`ul`);
+    drinkList.classList.add(`drink__ingredients__list`);
+
+    Object.keys(drink).forEach(key => {
+        if (key.includes(`strIngredient`)) {
+            if (drink[key] !== null) {
+                const measureKey = key.replace(`strIngredient`, `strMeasure`);
+                const ingredientText = (drink[measureKey] ?? ``) + ` ${drink[key]}`;
+
+                const drinkItem = document.createElement(`li`);
+                drinkItem.innerText = ingredientText;
+                drinkList.appendChild(drinkItem);
+            }
+        }
+    });
+
+    drinkIngredients.appendChild(drinkList);
+
+    return drinkIngredients;
+}
+
 function showResults(results) {
     console.log(results);
 
@@ -60,6 +85,10 @@ function showResults(results) {
 
         // Add the drink name to the drink block
         drinkBlock.appendChild(drinkName);
+
+        // Get the ingredients
+        const drinkIngredients = compileIngredients(drink);
+        drinkBlock.appendChild(drinkIngredients);
 
         // Create a block for the drink instructions
         const drinkInstructions = document.createElement(`div`);
