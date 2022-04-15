@@ -50,6 +50,7 @@ function showResults(results) {
     console.log(results);
 
     const resultsBlock = document.querySelector(`.results`);
+    resultsBlock.innerHTML = ``;
 
     const intro = document.createElement(`div`);
     intro.classList.add(`intro`);
