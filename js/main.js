@@ -47,8 +47,6 @@ function compileIngredients(drink) {
 }
 
 function showResults(results) {
-    console.log(results);
-
     const resultsBlock = document.querySelector(`.results`);
     resultsBlock.innerHTML = ``;
 
@@ -56,7 +54,7 @@ function showResults(results) {
     intro.classList.add(`intro`);
     intro.innerText = `Showing ${results.drinks.length} results`;
 
-    document.querySelector(`main`).classList.add(`showResults`);
+    document.querySelector(`body`).classList.add(`showResults`);
 
     resultsBlock.appendChild(intro);
 
@@ -80,9 +78,54 @@ function showResults(results) {
         drinkBlock.appendChild(drinkThumbnail);
 
         // Create a block for the drink name
-        const drinkName = document.createElement(`div`);
+        const drinkName = document.createElement(`button`);
         drinkName.classList.add(`drink__name`);
         drinkName.innerText = drink.strDrink;
+
+        drinkName.addEventListener(`click`, (e) => {
+            const selectedDrink = {
+                image: document.querySelector(`.selectedDrink__image`),
+                name: document.querySelector(`.selectedDrink__name`),
+                tags: document.querySelector(`.selectedDrink__tags`),
+                glass: document.querySelector(`.selectedDrink__glass`),
+                ingredients: document.querySelector(`.selectedDrink__ingredients`),
+                instructions: document.querySelector(`.selectedDrink__instructions`),
+                video: document.querySelector(`.selectedDrink__video`),
+            }
+
+            console.log(selectedDrink);
+
+            // Set the image
+            selectedDrink.image.alt = drink.strDrink;
+            selectedDrink.image.src = drink.strDrinkThumb;
+
+            // Set the name
+            selectedDrink.name.querySelector(`h1`).innerText = drink.strDrink;
+
+            // Set the tags
+            selectedDrink.tags.innerHTML = `Tags: ${drink.strTags ?? ``}`;
+
+            // Set the glass
+            selectedDrink.glass.innerHTML = `Glass: ${drink.strGlass ?? ``}`;
+
+            // Set the ingredients
+            selectedDrink.ingredients.querySelector(`.content`).appendChild(compileIngredients(drink));
+
+            // Set the instructions
+            selectedDrink.instructions.querySelector(`.content`).innerText = drink.strInstructions;
+
+            // Set the video
+            if (drink.strVideo) {
+                selectedDrink.video.innerHTML = `
+                    <h2>Video</h2>
+                    <iframe width="560" height="315" src="${drink.strVideo}" frameborder="0" allowfullscreen></iframe>
+                `;
+            } else {
+                selectedDrink.video.innerHTML = ``;
+            }
+
+            document.querySelector(`.selectedDrink`).classList.add(`visible`);
+        });
 
         // Add the drink name to the drink block
         drinkBlock.appendChild(drinkName);
