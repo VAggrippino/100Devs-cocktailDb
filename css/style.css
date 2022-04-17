@@ -24,6 +24,10 @@ body.showResults {
     overflow: auto;
 }
 
+body.drinkSelected {
+    overflow: hidden;
+}
+
 header, footer {
     background-color: var(--background);
 }
@@ -139,16 +143,16 @@ footer {
     position: fixed;
     left: 0;
     top: 100vh;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding-block: 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .selectedDrink.visible {
-    transition: all 1000ms;
+    transition: top 1000ms;
     top: 0;
 }
 
 .selectedDrink > .container {
+    border: 3px outset silver;
     background-color: #333;
     width: 90%;
     height: 90%;
@@ -158,9 +162,9 @@ footer {
         [drinkImage] 50%
         [drinkDetails] 50%;
     grid-template-rows:
-        [drinkName] 3rem
-        [drinkTags] 2rem
-        [drinkGlass] 2rem
+        [drinkName] 1fr
+        [drinkTags] 1fr
+        [drinkGlass] 1fr
         [drinkVideo] 1fr
         [drinkIngredients] 2fr
         [drinkInstructions] 10fr;
@@ -170,7 +174,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    padding-block: 1rem;
+    padding: 1rem;
 }
 
 .selectedDrink > .container :is(h1, h2, h3, h4, h5, h6) {

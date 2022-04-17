@@ -126,6 +126,7 @@ function showResults(results) {
             }
 
             document.querySelector(`.selectedDrink`).classList.add(`visible`);
+            document.body.classList.add(`drinkSelected`);
         });
 
         // Add the drink name to the drink block
