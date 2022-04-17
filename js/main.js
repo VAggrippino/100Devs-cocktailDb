@@ -64,26 +64,7 @@ function showResults(results) {
         const drinkBlock = document.createElement(`div`);
         drinkBlock.classList.add(`drink`);
 
-        // Create a block for the drink thumbnail
-        const drinkThumbnail = document.createElement(`div`);
-        drinkThumbnail.classList.add(`drink__thumbnail`);
-
-        // Add the image to the thumbnail block
-        const drinkImage = document.createElement(`img`);
-        drinkImage.src = drink.strDrinkThumb;
-
-        // Add the image to the thumbnail block
-        drinkThumbnail.appendChild(drinkImage);
-
-        // Add the thumbnail to the drink block
-        drinkBlock.appendChild(drinkThumbnail);
-
-        // Create a block for the drink name
-        const drinkName = document.createElement(`button`);
-        drinkName.classList.add(`drink__name`);
-        drinkName.innerText = drink.strDrink;
-
-        drinkName.addEventListener(`click`, (e) => {
+        drinkBlock.addEventListener(`click`, (e) => {
             const selectedDrink = {
                 image: document.querySelector(`.selectedDrink__image`),
                 name: document.querySelector(`.selectedDrink__name`),
@@ -128,6 +109,25 @@ function showResults(results) {
             document.querySelector(`.selectedDrink`).classList.add(`visible`);
             document.body.classList.add(`drinkSelected`);
         });
+
+        // Create a block for the drink thumbnail
+        const drinkThumbnail = document.createElement(`div`);
+        drinkThumbnail.classList.add(`drink__thumbnail`);
+
+        // Add the image to the thumbnail block
+        const drinkImage = document.createElement(`img`);
+        drinkImage.src = drink.strDrinkThumb;
+
+        // Add the image to the thumbnail block
+        drinkThumbnail.appendChild(drinkImage);
+
+        // Add the thumbnail to the drink block
+        drinkBlock.appendChild(drinkThumbnail);
+
+        // Create a block for the drink name
+        const drinkName = document.createElement(`div`);
+        drinkName.classList.add(`drink__name`);
+        drinkName.innerText = drink.strDrink;
 
         // Add the drink name to the drink block
         drinkBlock.appendChild(drinkName);
