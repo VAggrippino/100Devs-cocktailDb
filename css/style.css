@@ -18,10 +18,14 @@ body {
     color: #ddd;
     font-family: sans-serif;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 body.showResults {
     overflow: auto;
+    justify-content: flex-start;
 }
 
 body.drinkSelected {
