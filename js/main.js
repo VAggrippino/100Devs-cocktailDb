@@ -47,6 +47,7 @@ function compileIngredients(drink) {
 }
 
 function showResults(results) {
+    console.log(results);
     const resultsBlock = document.querySelector(`.results`);
     resultsBlock.innerHTML = ``;
 
@@ -96,8 +97,8 @@ function showResults(results) {
             console.log(selectedDrink);
 
             // Set the image
-            selectedDrink.image.alt = drink.strDrink;
-            selectedDrink.image.src = drink.strDrinkThumb;
+            selectedDrink.image.querySelector(`img`).alt = drink.strDrink;
+            selectedDrink.image.querySelector(`img`).src = drink.strDrinkThumb;
 
             // Set the name
             selectedDrink.name.querySelector(`h1`).innerText = drink.strDrink;
