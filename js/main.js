@@ -152,8 +152,13 @@ window.addEventListener(`load`, () => {
 
     const cocktailQuery = document.querySelector(`.cocktailName`);
     cocktailQuery.addEventListener(`keyup`, (event) => {
-        if (event.keyCode === 13) {
-            getCocktail();
-        }
+        if (event.keyCode === 13) getCocktail();
+    });
+
+    const selectedDrink__close = document.querySelector(`.selectedDrink__close`);
+    selectedDrink__close.addEventListener(`click`, () => {
+        const selectedDrink = document.querySelector(`.selectedDrink`);
+        selectedDrink.classList.remove(`visible`);
+        document.body.classList.remove(`drinkSelected`);
     });
 });

@@ -148,10 +148,10 @@ footer {
     left: 0;
     top: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
+    transition: top 750ms;
 }
 
 .selectedDrink.visible {
-    transition: top 1000ms;
     top: 0;
 }
 
