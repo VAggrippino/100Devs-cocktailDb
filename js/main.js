@@ -30,7 +30,7 @@ function compileIngredients(drink) {
 
     Object.keys(drink).forEach(key => {
         if (key.includes(`strIngredient`)) {
-            if (drink[key] !== null) {
+            if (drink[key] !== null && drink[key].trim() !== ``) {
                 const measureKey = key.replace(`strIngredient`, `strMeasure`);
                 const ingredientText = (drink[measureKey] ?? ``) + ` ${drink[key]}`;
 
@@ -74,8 +74,6 @@ function showResults(results) {
                 instructions: document.querySelector(`.selectedDrink__instructions`),
                 video: document.querySelector(`.selectedDrink__video`),
             }
-
-            console.log(selectedDrink);
 
             // Set the image
             selectedDrink.image.querySelector(`img`).alt = drink.strDrink;
