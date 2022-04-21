@@ -5,7 +5,7 @@
     --background: #202124;
 }
 
-*{ box-sizing: border-box; }
+* { box-sizing: border-box }
 
 html, body {
     height: 100%;
@@ -36,14 +36,43 @@ header, footer {
     background-color: var(--background);
 }
 
-header .branding {
-    font-size: clamp(1.5rem, 10vw, 5rem);
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.branding {
+    font-size: 5rem;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
-    text-align: center;
-    margin: 5rem 0 0 0;
-    display: inline-block;
-    width: 100%;
     font-family: serif;
+
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.branding__name {
+    height: 100%;
+    height: 5rem;
+
+}
+
+.branding__name__logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.branding__name__logo img {
+    height: 100%;
+}
+
+.branding__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     /* Gradient Text */
     background-clip: text;
@@ -51,35 +80,36 @@ header .branding {
     color: transparent;
     background-image: linear-gradient(var(--brandOrange), var(--brandYellow) 60%);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-header .branding i {
+.branding__name i {
     margin-right: 1rem;
 }
 
-header .inputWrapper {
+.branding__slogan {
+    font-size: 20%;
+    color: silver;
+    text-align: center;
+    position: relative;
+    top: -0.25em;
+}
+
+.searchInput {
     margin: 1rem;
+    padding: 0.5rem 1rem;
 
     font-size: 1.5rem;
-    width: 20em;
+    width: 95vw;
     border: 1px solid #ddd;
     border-radius: 2rem;
     color: #ddd;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 1rem;
-
-    /* Center */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
-header input {
+.searchInput input {
     background: transparent;
     padding: 0;
     width: 100%;
@@ -89,22 +119,17 @@ header input {
     font-size: 1.5rem;
 }
 
-header input:focus {
+.searchInput input:focus {
     outline: none;
 }
 
 header button.getCocktail {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+    background-color: #333;
+    color: white;
     border-style: none;
     border-radius: 5px;
-    color: white;
-    background-color: #333;
-    padding: 0.5em 1em;
     font-size: 1.2rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    padding: 0.5em 1em;
 }
 
 .showResults header {
@@ -155,7 +180,7 @@ footer {
     top: 0;
 }
 
-.selectedDrink > .container {
+.selectedDrink>.container {
     border: 3px outset silver;
     background-color: #333;
     width: 90%;
@@ -164,15 +189,9 @@ footer {
 
     display: grid;
     grid-template-columns:
-        [drinkImage] 50%
-        [drinkDetails] 50%;
+        [drinkImage] 50% [drinkDetails] 50%;
     grid-template-rows:
-        [drinkName] 1fr
-        [drinkTags] 1fr
-        [drinkGlass] 1fr
-        [drinkVideo] 1fr
-        [drinkIngredients] 2fr
-        [drinkInstructions] 10fr;
+        [drinkName] 1fr [drinkTags] 1fr [drinkGlass] 1fr [drinkVideo] 1fr [drinkIngredients] 2fr [drinkInstructions] 10fr;
 
     position: absolute;
     top: 50%;
@@ -182,7 +201,7 @@ footer {
     padding: 1rem;
 }
 
-.selectedDrink > .container :is(h1, h2, h3, h4, h5, h6) {
+.selectedDrink>.container :is(h1, h2, h3, h4, h5, h6) {
     margin: 0;
 }
 
@@ -234,7 +253,8 @@ footer {
     font-size: 1.5rem;
 }
 
-.selectedDrink__tags, .selectedDrink__glass {
+.selectedDrink__tags,
+.selectedDrink__glass {
     display: flex;
     align-items: center;
 }
