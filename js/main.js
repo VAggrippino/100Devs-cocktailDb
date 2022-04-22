@@ -2,6 +2,7 @@
 
 
 function getCocktail() {
+    // TODO: Handle null results
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php`;
     const cocktailName = document.querySelector(`.cocktailName`);
 
@@ -52,7 +53,7 @@ function showResults(results) {
     resultsBlock.innerHTML = ``;
 
     const intro = document.createElement(`div`);
-    intro.classList.add(`intro`);
+    intro.classList.add(`results__intro`);
     intro.innerText = `Showing ${results.drinks.length} results`;
 
     document.querySelector(`body`).classList.add(`showResults`);
@@ -108,6 +109,14 @@ function showResults(results) {
             document.body.classList.add(`drinkSelected`);
         });
 
+        // Create a block for the drink name
+        const drinkName = document.createElement(`div`);
+        drinkName.classList.add(`drink__name`);
+        drinkName.innerText = drink.strDrink;
+
+        // Add the drink name to the drink block
+        drinkBlock.appendChild(drinkName);
+
         // Create a block for the drink thumbnail
         const drinkThumbnail = document.createElement(`div`);
         drinkThumbnail.classList.add(`drink__thumbnail`);
@@ -121,14 +130,6 @@ function showResults(results) {
 
         // Add the thumbnail to the drink block
         drinkBlock.appendChild(drinkThumbnail);
-
-        // Create a block for the drink name
-        const drinkName = document.createElement(`div`);
-        drinkName.classList.add(`drink__name`);
-        drinkName.innerText = drink.strDrink;
-
-        // Add the drink name to the drink block
-        drinkBlock.appendChild(drinkName);
 
         // Get the ingredients
         const drinkIngredients = compileIngredients(drink);

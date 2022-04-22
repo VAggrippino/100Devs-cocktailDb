@@ -15,22 +15,21 @@
                 </div>
                 <div class="branding__slogan">The Bartender's Reference</div>
             </div>
-            <div class="searchInput">
+            <div class="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" class="cocktailName">
+                <input type="text" class="search__input cocktailName">
             </div>
-            <button type="button" class="getCocktail" id="getCocktail">Get Cocktail</button>
+            <button type="button" class="search__button getCocktail" id="getCocktail">Get Cocktail</button>
         </header>
         <main class="results"></main>
         <footer></footer>
         <div class="selectedDrink">
             <div class="container">
-                <button class="selectedDrink__close">&times;</button>
-                <section class="selectedDrink__image">
-                    <img alt="drink" src="https://via.placeholder.com/1600x900/000/fff.webp?text=Your+Selected+Drink">
-                </section>
                 <section class="selectedDrink__name">
                     <h1>Your Selected Drink</h1>
+                </section>
+                <section class="selectedDrink__image">
+                    <img alt="drink" src="https://via.placeholder.com/1600x900/000/fff.webp?text=Your+Selected+Drink">
                 </section>
                 <section class="selectedDrink__tags"></section>
                 <section class="selectedDrink__glass"></section>
@@ -43,6 +42,7 @@
                     <h2>Instructions</h1>
                     <div class="content"></div>
                 </section>
+                <button class="selectedDrink__close">&times;</button>
             </div>
         </div>
         <script type="text/javascript" src="js/main.js"></script>
